@@ -1,51 +1,41 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Instagram, Phone } from 'lucide-react';
 import { SectionHeader } from '@/components/SectionHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FAQS = [
   {
-    question: 'Quais regiões vocês atendem?',
+    question: 'Como a Cordeiro Construções e Elétrica pode me ajudar na construção da minha casa?',
     answer:
-      'Atendemos toda a região metropolitana do Rio de Janeiro, incluindo capital, Niterói, São Gonçalo e Baixada Fluminense. Para outras regiões, entre em contato para verificarmos a disponibilidade.',
+      'Nossa missão é facilitar todo o processo da construção e te orientar nas melhores escolhas e em economias inteligentes. Contamos com a expertise de uma dupla com muito conhecimento técnico e experiência prática, atuando desde os projetos estrutural, elétrico, hidrossanitário e muro de arrimo até o acompanhamento e execução de obras e elétrica.',
   },
   {
-    question: 'O orçamento é realmente gratuito?',
+    question: 'Como posso fazer um orçamento pelo Direct do Instagram?',
     answer:
-      'Sim! A visita técnica e o orçamento são completamente gratuitos e sem compromisso. Você só paga após a aprovação do serviço.',
+      'É muito simples e rápido! Basta enviar uma mensagem no direct do nosso perfil do Instagram (@cordeiroconstrucoeseletrica) informando o tipo de serviço que você precisa (projeto, obra, elétrica ou CFTV) e a localização da sua obra. Nossa equipe responde prontamente.',
   },
   {
-    question: 'Qual o prazo de garantia dos serviços?',
+    question: 'Por que o projeto estrutural e o cálculo de muro de arrimo são indispensáveis?',
     answer:
-      'Todos os nossos serviços possuem garantia de 90 dias. Equipamentos instalados têm garantia conforme especificação do fabricante, que pode variar de 1 a 5 anos.',
+      'O projeto estrutural garante a estabilidade, solidez e segurança de toda a edificação. Além de prevenir rachaduras, trincas e desabamentos, ele calcula o uso exato de aço, brita, areia e cimento, gerando economia expressiva contra o desperdício de materiais.',
   },
   {
-    question: 'Vocês trabalham com materiais de qualidade?',
+    question: 'O que está incluso no acompanhamento de obra?',
     answer:
-      'Utilizamos apenas materiais certificados e de marcas reconhecidas no mercado. Trabalhamos com Intelbras, Hikvision, PPA, Garen e outras marcas de confiança.',
+      'O acompanhamento de obra envolve vistorias técnicas periódicas no canteiro, fiscalização da conformidade com os projetos aprovados, instrução aos mestres e pedreiros, e garantia de que o cronograma e os padrões de segurança e qualidade sejam estritamente cumpridos.',
   },
   {
-    question: 'É possível parcelar o serviço?',
+    question: 'Quais serviços elétricos e de segurança vocês executam?',
     answer:
-      'Sim! Aceitamos pagamento em dinheiro, PIX, cartão de débito e crédito (em até 12x). Para valores acima de R$ 2.000, oferecemos condições especiais de parcelamento.',
+      'Executamos instalações elétricas completas (novas ou reformas, quadros de distribuição, iluminação, tomadas) e segurança patrimonial avançada: instalação de Câmeras CFTV com visualização em tempo real no celular, alarmes e segurança eletrônica.',
   },
   {
-    question: 'Como funciona o atendimento de emergência?',
+    question: 'Quais formas de pagamento são aceitas?',
     answer:
-      'Temos plantão de emergência 24h para casos de curto-circuito, queda de energia e problemas críticos de segurança. Ligue diretamente no nosso WhatsApp para atendimento prioritário.',
-  },
-  {
-    question: 'Preciso estar presente no dia da instalação?',
-    answer:
-      'Recomendamos que alguém responsável esteja presente para acompanhar o serviço e esclarecer qualquer dúvida. O tempo de instalação varia conforme a complexidade, de 2 a 8 horas em média.',
-  },
-  {
-    question: 'Vocês fazem manutenção de sistemas instalados por outras empresas?',
-    answer:
-      'Sim! Fazemos manutenção, reparo e atualização de sistemas de segurança e elétrica instalados por terceiros. Realizamos uma avaliação técnica antes de qualquer intervenção.',
+      'Trabalhamos com condições flexíveis para viabilizar o seu projeto: PIX, transferências bancárias, dinheiro e parcelamento no cartão de crédito.',
   },
 ];
 
@@ -64,44 +54,40 @@ function FAQItem({
 
   return (
     <div
-      className="rounded-xl transition-all duration-300 overflow-hidden"
+      className="rounded-2xl transition-all duration-300 overflow-hidden mb-3"
       style={{
-        background: 'var(--surface)',
+        background: 'rgba(17, 34, 27, 0.7)',
         border: `1px solid ${
-          isOpen ? 'rgba(26, 115, 232, 0.3)' : 'var(--surface-border)'
+          isOpen ? '#D4AF37' : 'rgba(212, 175, 55, 0.2)'
         }`,
-        marginBottom: '12px',
+        boxShadow: isOpen ? '0 8px 25px rgba(212, 175, 55, 0.15)' : 'none',
       }}
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between px-6 lg:px-8 py-5 lg:py-7 text-left transition-colors"
+        className="w-full flex items-center justify-between px-6 lg:px-8 py-5 text-left transition-colors hover:text-[#D4AF37]"
         aria-expanded={isOpen}
       >
-        <span className="font-bold text-base lg:text-xl text-white pr-4">
+        <span className="font-bold text-base sm:text-lg text-white pr-4 leading-snug">
           {question}
         </span>
         <ChevronDown
-          size={24}
-          className="flex-shrink-0 transition-transform duration-300"
+          size={22}
+          className="flex-shrink-0 text-[#D4AF37] transition-transform duration-300"
           style={{
-            color: 'var(--electric)',
             transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         />
       </button>
       <div
         ref={contentRef}
-        className="overflow-hidden transition-all duration-500 ease-in-out"
+        className="overflow-hidden transition-all duration-400 ease-in-out"
         style={{
           maxHeight: isOpen ? '300px' : '0',
           opacity: isOpen ? 1 : 0,
         }}
       >
-        <div
-          className="px-6 lg:px-8 pb-5 lg:pb-7 text-base lg:text-base leading-relaxed"
-          style={{ color: 'var(--text-muted)' }}
-        >
+        <div className="px-6 lg:px-8 pb-6 text-sm sm:text-base text-white/75 leading-relaxed border-t border-white/5 pt-3">
           {answer}
         </div>
       </div>
@@ -110,7 +96,7 @@ function FAQItem({
 }
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -122,7 +108,7 @@ export function FAQSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         list.children,
-        { y: 40, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -131,7 +117,7 @@ export function FAQSection() {
           ease: 'power2.out',
           scrollTrigger: {
             trigger: list,
-            start: 'top 70%',
+            start: 'top 75%',
             once: true,
           },
         }
@@ -144,16 +130,24 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="section-padding"
-      style={{ background: '#0B1F3F' }}
+      className="section-padding relative"
+      style={{
+        background: 'linear-gradient(180deg, #0C1814 0%, #11231C 50%, #0C1814 100%)',
+      }}
     >
       <div className="content-container">
         <SectionHeader
           label="PERGUNTAS FREQUENTES"
-          heading={<>Tire suas Dúvidas</>}
+          heading={
+            <>
+              Dúvidas sobre Nossos{' '}
+              <span className="text-gradient-gold">Projetos &amp; Serviços</span>
+            </>
+          }
+          subtitle="Confira as respostas para as principais perguntas sobre nossa forma de trabalho, orçamentos e acompanhamento de obras."
         />
 
-        <div ref={listRef} className="max-w-[800px] mx-auto">
+        <div ref={listRef} className="max-w-[840px] mx-auto">
           {FAQS.map((faq, idx) => (
             <FAQItem
               key={idx}
@@ -165,6 +159,36 @@ export function FAQSection() {
               }
             />
           ))}
+        </div>
+
+        {/* Still have questions */}
+        <div className="max-w-[840px] mx-auto mt-10 p-6 rounded-2xl bg-[#0C1814] border border-[#D4AF37]/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <h4 className="font-bold text-white text-base">Ainda tem alguma dúvida?</h4>
+            <p className="text-xs text-white/60 mt-0.5">
+              Fale agora com a nossa equipe pelo Direct ou WhatsApp!
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <a
+              href="https://www.instagram.com/cordeiroconstrucoeseletrica/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-xl font-bold text-xs bg-[#D4AF37] text-[#0C1814] hover:bg-[#F3E2B8] transition-colors flex items-center gap-1.5"
+            >
+              <Instagram size={14} />
+              Chamar no Direct
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=5522997298782&text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20com%20a%20Cordeiro%20Constru%C3%A7%C3%B5es%20e%20El%C3%A9trica.&type=phone_number&app_absent=0&utm_source=ig"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-xl font-bold text-xs bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors flex items-center gap-1.5"
+            >
+              <Phone size={14} />
+              WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>

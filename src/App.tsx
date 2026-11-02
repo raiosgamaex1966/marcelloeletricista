@@ -13,7 +13,7 @@ function App() {
   useLenis();
 
   return (
-    <div className="min-h-screen" style={{ background: '#0B1F3F' }}>
+    <div className="min-h-screen bg-[#0C1814] text-[#F8FAF9] selection:bg-[#D4AF37] selection:text-[#0C1814]">
       <Header />
       <main>
         <HeroSection />

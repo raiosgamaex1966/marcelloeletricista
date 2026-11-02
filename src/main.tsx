@@ -1,5 +1,14 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.tsx';
 
-createRoot(document.getElementById('root')!).render(<App />)
+// Registro do PWA Service Worker
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((error) => {
+      console.error('Falha ao registrar Service Worker PWA:', error);
+    });
+  });
+}
+
+createRoot(document.getElementById('root')!).render(<App />);

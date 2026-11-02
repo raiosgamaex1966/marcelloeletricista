@@ -8,24 +8,29 @@ export interface ServiceOption {
 
 export const SERVICES: ServiceOption[] = [
   {
+    id: 'projeto',
+    title: 'Projeto Estrutural, Hidrossanitário, Elétrico e Muro de Arrimo',
+    description: 'Projetos completos com cálculo e conformidade técnica',
+  },
+  {
+    id: 'acompanhamento',
+    title: 'Acompanhamento de Obra',
+    description: 'Gestão, fiscalização técnica e economia inteligente',
+  },
+  {
+    id: 'eletrica',
+    title: 'Instalações e Reparos Elétricos',
+    description: 'Quadros, fiação, reformas e iluminação segura',
+  },
+  {
+    id: 'cftv',
+    title: 'Câmera e CFTV',
+    description: 'Instalação de câmeras Full HD e acesso no celular',
+  },
+  {
     id: 'seguranca',
     title: 'Segurança Eletrônica',
-    description: 'CFTV, alarmes, cercas elétricas',
-  },
-  {
-    id: 'automacao',
-    title: 'Automação Residencial',
-    description: 'Fechaduras, portões, controle de acesso',
-  },
-  {
-    id: 'eletrica-res',
-    title: 'Elétrica Residencial',
-    description: 'Instalações, reformas, iluminação',
-  },
-  {
-    id: 'eletrica-ind',
-    title: 'Elétrica Industrial',
-    description: 'Painéis, manutenção, diagnósticos',
+    description: 'Alarmes, sensores perimetrais e controle de acesso',
   },
 ];
 
@@ -101,25 +106,29 @@ export function useScheduleWizard() {
     if (!validateForm()) return;
     setSubmitStatus('submitting');
 
-    const serviceLabel = selectedService ? (SERVICES.find(s => s.id === selectedService)?.title || selectedService) : '';
+    const serviceLabel = selectedService
+      ? SERVICES.find((s) => s.id === selectedService)?.title || selectedService
+      : '';
     const formattedDate = selectedDate ? selectedDate.toLocaleDateString('pt-BR') : '';
-    
-    const message = `Olá Marcello! Gostaria de agendar uma visita técnica:
+
+    const message = `Olá! Gostaria de solicitar um orçamento / visita técnica com a *Cordeiro Construções e Elétrica*:
 - *Serviço:* ${serviceLabel}
-- *Data:* ${formattedDate}
-- *Horário:* ${selectedTime}
+- *Data sugerida:* ${formattedDate}
+- *Horário preferencial:* ${selectedTime}
 - *Nome:* ${formData.name}
 - *Telefone:* ${formData.phone}
-- *Endereço:* ${formData.address}
-${formData.notes.trim() ? `- *Observações:* ${formData.notes.trim()}` : ''}`;
+- *Endereço/Cidade:* ${formData.address}
+${formData.notes.trim() ? `- *Detalhes:* ${formData.notes.trim()}` : ''}
+
+(Projetando Hoje, Construindo Amanhã)`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/5522981697377?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=5522997298782&text=${encodedMessage}&type=phone_number&app_absent=0&utm_source=ig`;
 
     setTimeout(() => {
       setSubmitStatus('success');
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    }, 1500);
+    }, 1200);
   }, [validateForm, selectedService, selectedDate, selectedTime, formData]);
 
   const reset = useCallback(() => {
@@ -135,9 +144,7 @@ ${formData.notes.trim() ? `- *Observações:* ${formData.notes.trim()}` : ''}`;
   const canGoToStep3 = selectedDate && selectedTime;
 
   const isFormValid =
-    formData.name.trim() &&
-    formData.phone.trim() &&
-    formData.address.trim();
+    formData.name.trim() && formData.phone.trim() && formData.address.trim();
 
   return {
     step,

@@ -1,9 +1,10 @@
-import { Phone } from 'lucide-react';
+import { Phone, Instagram, Sparkles } from 'lucide-react';
 
 const QUICK_LINKS = [
   { id: 'inicio', label: 'Início' },
   { id: 'servicos', label: 'Serviços' },
-  { id: 'agendar', label: 'Agendar' },
+  { id: 'sobre', label: 'Sobre Nós' },
+  { id: 'agendar', label: 'Orçamento' },
   { id: 'faq', label: 'FAQ' },
   { id: 'contato', label: 'Contato' },
 ];
@@ -20,32 +21,33 @@ export function Footer() {
 
   return (
     <footer
-      className="pt-14 pb-10"
+      className="pt-16 pb-12 relative overflow-hidden"
       style={{
-        background: '#061220',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        background: '#07100D',
+        borderTop: '1px solid rgba(212, 175, 55, 0.2)',
       }}
     >
       <div className="content-container">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center"
-              style={{ background: 'var(--electric)' }}
-            >
-              <span className="text-white font-black text-sm">MC</span>
+          {/* Logo Brand */}
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.3)] bg-[#0C1814] flex-shrink-0">
+              <img
+                src="/images/cordeiro-emblem.png"
+                alt="Cordeiro Construções e Elétrica"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
-              <div className="text-white font-bold text-lg leading-tight">
-                MARCELLO CORDEIRO
+              <div className="text-white font-brand-display font-black text-lg leading-tight tracking-[0.08em]">
+                CORDEIRO
               </div>
               <div
-                className="text-xs uppercase tracking-[0.15em]"
-                style={{ color: 'var(--text-muted)' }}
+                className="text-[11px] uppercase tracking-[0.16em] font-medium"
+                style={{ color: '#DEC196' }}
               >
-                ELETROTÉCNICO
+                CONSTRUÇÕES &amp; ELÉTRICA
               </div>
             </div>
           </div>
@@ -56,43 +58,67 @@ export function Footer() {
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="text-sm transition-colors duration-200 hover:text-white"
-                style={{ color: 'var(--text-muted)' }}
+                className="text-sm text-white/70 hover:text-[#D4AF37] transition-colors duration-200"
               >
                 {link.label}
               </button>
             ))}
           </nav>
 
-          {/* WhatsApp */}
-          <a
-            href="https://wa.me/5522981697377"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200"
-            style={{
-              background: 'rgba(46, 204, 113, 0.1)',
-              border: '1px solid rgba(46, 204, 113, 0.2)',
-              color: 'var(--success)',
-            }}
-          >
-            <Phone size={16} />
-            <span className="font-medium text-sm">(22) 98169-7377</span>
-          </a>
+          {/* Direct & WhatsApp */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/cordeiroconstrucoeseletrica/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border border-[#D4AF37]/40 text-[#DEC196] hover:bg-[#D4AF37]/15 hover:text-white transition-all"
+            >
+              <Instagram size={15} className="text-[#D4AF37]" />
+              <span>Direct</span>
+            </a>
+
+            <a
+              href="https://api.whatsapp.com/send/?phone=5522997298782&text&type=phone_number&app_absent=0&utm_source=ig"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all"
+              style={{
+                background: 'rgba(37, 211, 102, 0.12)',
+                border: '1px solid rgba(37, 211, 102, 0.35)',
+                color: '#25D366',
+              }}
+            >
+              <Phone size={15} />
+              <span>(22) 99729-8782</span>
+            </a>
+          </div>
         </div>
 
-        {/* Divider */}
+        {/* Brand Mission Callout in Footer */}
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-white/60">
+          <div className="flex items-center gap-2 text-[#DEC196]">
+            <Sparkles size={14} className="text-[#D4AF37]" />
+            <span className="font-semibold uppercase tracking-wider">
+              Projetando Hoje, Construindo Amanhã
+            </span>
+          </div>
+          <p className="max-w-md">
+            Expertise técnica e experiência prática para transformar seu projeto em realidade com máxima segurança e economias inteligentes.
+          </p>
+        </div>
+
+        {/* Divider & Copyright */}
         <div
-          className="mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40"
           style={{
             borderTop: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          <span style={{ color: 'rgba(255,255,255,0.3)' }} className="text-[13px]">
-            &copy; 2026 Marcello Cordeiro. Todos os direitos reservados.
+          <span>
+            &copy; {new Date().getFullYear()} Cordeiro Construções e Elétrica. Todos os direitos reservados.
           </span>
-          <span style={{ color: 'rgba(255,255,255,0.3)' }} className="text-[13px]">
-            Desenvolvido com segurança e tecnologia.
+          <span>
+            Projetos • Obras • Elétrica • CFTV • Segurança Eletrônica
           </span>
         </div>
       </div>

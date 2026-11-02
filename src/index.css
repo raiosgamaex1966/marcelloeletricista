@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,36 +6,50 @@
 
 @layer base {
   :root {
-    --navy: #0B1F3F;
-    --midnight: #091829;
-    --electric: #1A73E8;
-    --electric-light: #4A9EFF;
-    --amber: #F5A623;
-    --surface: rgba(255, 255, 255, 0.06);
-    --surface-border: rgba(255, 255, 255, 0.12);
-    --text-muted: rgba(255, 255, 255, 0.6);
-    --success: #2ECC71;
-    --chat-bubble: #E8F0FE;
-    --radius: 0.625rem;
-    --background: 216 55% 15%;
-    --foreground: 0 0% 100%;
-    --card: 216 55% 15%;
-    --card-foreground: 0 0% 100%;
-    --popover: 216 55% 15%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 214 80% 51%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 214 80% 51%;
-    --accent-foreground: 0 0% 100%;
+    /* Identidade Cordeiro Construções e Elétrica */
+    --navy: #0C1814;
+    --midnight: #07100D;
+    --brand-bg: #0C1814;
+    --brand-card: #11221B;
+    --brand-card-hover: #162B23;
+    
+    /* Dourado Nobre / Champagne Gold do Logo */
+    --gold: #D4AF37;
+    --gold-light: #F3E2B8;
+    --gold-warm: #DEC196;
+    --gold-dark: #9E7D2B;
+    --gold-border: rgba(212, 175, 55, 0.28);
+    
+    /* Variáveis compatíveis com componentes existentes */
+    --electric: #D4AF37;
+    --electric-light: #F3E2B8;
+    --amber: #DEC196;
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-border: rgba(222, 193, 150, 0.18);
+    --text-muted: rgba(225, 235, 230, 0.7);
+    --success: #25D366;
+    --chat-bubble: #162B22;
+    --radius: 0.75rem;
+
+    --background: 160 33% 7%;
+    --foreground: 45 40% 96%;
+    --card: 160 30% 10%;
+    --card-foreground: 45 40% 96%;
+    --popover: 160 30% 10%;
+    --popover-foreground: 45 40% 96%;
+    --primary: 43 65% 52%;
+    --primary-foreground: 160 33% 7%;
+    --secondary: 160 20% 16%;
+    --secondary-foreground: 45 40% 96%;
+    --muted: 160 20% 16%;
+    --muted-foreground: 160 10% 65%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 160 33% 7%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 30% 20%;
-    --input: 214 30% 20%;
-    --ring: 214 80% 51%;
+    --border: 160 20% 18%;
+    --input: 160 20% 18%;
+    --ring: 43 65% 52%;
   }
 
   * {
@@ -48,8 +62,8 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--navy);
-    color: #FFFFFF;
+    background-color: var(--brand-bg);
+    color: #F8FAF9;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -58,24 +72,41 @@
 
 @layer components {
   .section-padding {
-    @apply py-[72px] lg:py-[140px];
+    @apply py-[72px] lg:py-[120px];
   }
 
   .content-container {
-    @apply max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
 @layer utilities {
+  .font-brand-display {
+    font-family: 'Cinzel', serif;
+  }
+
   .font-mono-display {
     font-family: 'IBM Plex Mono', monospace;
   }
 
-  .text-gradient-electric {
-    background: linear-gradient(135deg, var(--electric) 0%, var(--electric-light) 100%);
+  .text-gradient-electric,
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #FFF5DE 0%, #E8CFAB 35%, #D4AF37 70%, #AA771C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #DEC196 0%, #D4AF37 50%, #B38827 100%);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.28);
+  }
+
+  .gold-glow-lg {
+    box-shadow: 0 0 45px rgba(212, 175, 55, 0.35);
   }
 
   .bg-surface {
@@ -93,8 +124,8 @@
 
 /* Shield pulse animation */
 @keyframes shieldPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.25)); }
+  50% { transform: scale(1.02); filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.45)); }
 }
 
 .animate-shield-pulse {
@@ -137,7 +168,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: var(--electric);
+  background: var(--gold);
   animation: ripple 2s ease-out infinite;
 }
 
@@ -179,12 +210,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(26, 115, 232, 0.3);
+  background: rgba(212, 175, 55, 0.35);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(26, 115, 232, 0.5);
+  background: rgba(212, 175, 55, 0.65);
 }
 
 /* Lenis smooth scroll */

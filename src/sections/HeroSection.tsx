@@ -1,46 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { Shield, Camera, Lock, Zap, Phone, ChevronLeft, ChevronRight, VolumeX } from 'lucide-react';
+import {
+  Shield,
+  Camera,
+  Zap,
+  Phone,
+  Instagram,
+  Compass,
+  HardHat,
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle2,
+  Sparkles,
+} from 'lucide-react';
 
 const STATS = [
-  { number: '500+', label: 'Serviços Realizados' },
-  { number: '10+', label: 'Anos de Experiência' },
-  { number: '24h', label: 'Atendimento Emergencial' },
+  { number: '100%', label: 'Compromisso com Qualidade' },
+  { number: 'Dupla', label: 'Técnica & Prática Especializada' },
+  { number: 'Completo', label: 'Do Projeto ao Acabamento' },
 ];
 
 const SLIDES = [
   {
-    title: 'Segurança Eletrônica',
-    tag: 'CFTV & Alarmes',
-    description: 'Instalação de câmeras e sensores de monitoramento inteligente.',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-security-camera-monitoring-a-building-entrance-41712-large.mp4',
-    posterUrl: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
-    icon: Camera
+    title: 'Projetos Estruturais & Complementares',
+    tag: 'Estrutural • Elétrico • Hidrossanitário • Arrimo',
+    description: 'Projetos seguros com cálculo preciso para economias inteligentes na sua obra.',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-an-electrician-fixing-an-electrical-outlet-41978-large.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80',
+    icon: Compass,
   },
   {
-    title: 'Automação Residencial',
-    tag: 'Casa Inteligente',
-    description: 'Fechaduras digitais, iluminação controlada e portões automáticos.',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-person-typing-on-a-tablet-in-a-smart-home-43285-large.mp4',
-    posterUrl: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80',
-    icon: Lock
+    title: 'Acompanhamento de Obra',
+    tag: 'Gestão & Fiscalização',
+    description: 'Orientação técnica nas melhores escolhas para construir sem desperdício e sem dores de cabeça.',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-machinery-in-a-factory-44331-large.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb1861593?auto=format&fit=crop&w=600&q=80',
+    icon: HardHat,
   },
   {
-    title: 'Elétrica Residencial',
-    tag: 'Instalação & Manutenção',
-    description: 'Quadros elétricos de distribuição, tomadas e projetos de iluminação.',
+    title: 'Instalações & Reparos Elétricos',
+    tag: 'Residencial & Comercial',
+    description: 'Quadros de distribuição, fiação, iluminação e manutenções com total segurança.',
     videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-an-electrician-fixing-an-electrical-outlet-41978-large.mp4',
     posterUrl: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
-    icon: Zap
+    icon: Zap,
   },
   {
-    title: 'Elétrica Industrial',
-    tag: 'Painéis & Comandos',
-    description: 'Manutenção de máquinas de alta potência e comandos elétricos.',
-    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-machinery-in-a-factory-44331-large.mp4',
-    posterUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-    icon: Shield
-  }
+    title: 'Câmera e CFTV',
+    tag: 'Monitoramento em Alta Definição',
+    description: 'Instalação de câmeras com visualização no celular em tempo real 24 horas por dia.',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-security-camera-monitoring-a-building-entrance-41712-large.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=600&q=80',
+    icon: Camera,
+  },
+  {
+    title: 'Segurança Eletrônica',
+    tag: 'Proteção Patrimonial',
+    description: 'Sistemas de alarme, sensores de presença e barreiras de proteção para seu imóvel.',
+    videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-person-typing-on-a-tablet-in-a-smart-home-43285-large.mp4',
+    posterUrl: 'https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80',
+    icon: Shield,
+  },
 ];
 
 export function HeroSection() {
@@ -69,7 +89,7 @@ export function HeroSection() {
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.5 });
+      const tl = gsap.timeline({ delay: 0.2 });
 
       tl.fromTo(
         '.hero-badge',
@@ -78,20 +98,26 @@ export function HeroSection() {
       )
         .fromTo(
           '.hero-title-word',
-          { opacity: 0, x: -60 },
-          { opacity: 1, x: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' },
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          '.hero-slogan',
+          { opacity: 0, scale: 0.95 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: 'power2.out' },
           '-=0.3'
         )
         .fromTo(
           '.hero-subtitle',
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 25 },
           { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-          '-=0.4'
+          '-=0.3'
         )
         .fromTo(
           '.hero-cta',
-          { opacity: 0, scale: 0.9 },
-          { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'back.out(1.5)' },
           '-=0.3'
         )
         .fromTo(
@@ -101,10 +127,10 @@ export function HeroSection() {
           '-=0.2'
         )
         .fromTo(
-          '.hero-shield',
-          { opacity: 0, scale: 0.8 },
-          { opacity: 1, scale: 1, duration: 1, ease: 'elastic.out(1, 0.5)' },
-          '-=0.8'
+          '.hero-visual',
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 0.9, ease: 'power3.out' },
+          '-=0.7'
         )
         .fromTo(
           '.hero-orb',
@@ -130,116 +156,127 @@ export function HeroSection() {
     <section
       id="inicio"
       ref={sectionRef}
-      className="relative min-h-[100dvh] flex items-center overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center overflow-hidden pt-24 pb-16 lg:py-28"
       style={{
-        background: 'linear-gradient(180deg, #0B1F3F 0%, #091829 100%)',
+        background: 'radial-gradient(ellipse 80% 60% at 50% 20%, #162B22 0%, #0C1814 60%, #060F0C 100%)',
       }}
     >
-      {/* Decorative grid lines */}
+      {/* Decorative Golden Grid */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
+            'linear-gradient(rgba(212,175,55,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.4) 1px, transparent 1px)',
+          backgroundSize: '70px 70px',
         }}
       />
 
-      <div className="content-container relative z-10 w-full py-24 lg:py-0">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-          {/* Left Column - 60% */}
-          <div className="flex-1 lg:max-w-[60%]">
-            {/* Badge */}
+      {/* Ambient Gold Glow Behind Emblem */}
+      <div
+        className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none opacity-20"
+        style={{ background: '#D4AF37' }}
+      />
+
+      <div className="content-container relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-14">
+          {/* Left Column - 58% */}
+          <div className="flex-1 lg:max-w-[58%] text-left">
+            {/* Slogan Badge */}
             <div
-              className="hero-badge inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 opacity-0"
+              className="hero-badge inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wider mb-6 opacity-0"
               style={{
-                background: 'rgba(245, 166, 35, 0.15)',
-                border: '1px solid rgba(245, 166, 35, 0.3)',
-                color: 'var(--amber)',
+                background: 'rgba(212, 175, 55, 0.12)',
+                border: '1px solid rgba(212, 175, 55, 0.35)',
+                color: '#DEC196',
               }}
             >
-              PROFISSIONAL CERTIFICADO
+              <Sparkles size={14} className="text-[#D4AF37]" />
+              <span className="uppercase font-bold tracking-[0.14em]">
+                Projetando Hoje, Construindo Amanhã
+              </span>
             </div>
 
-            {/* Title */}
-            <h1 className="font-black text-5xl sm:text-6xl lg:text-[88px] lg:leading-[92px] text-white mb-5">
-              <span className="hero-title-word inline-block opacity-0">
-                Segurança{' '}
-              </span>
-              <span
-                className="hero-title-word inline-block opacity-0"
-                style={{ color: 'var(--electric)' }}
-              >
-                &amp;
+            {/* Brand Title */}
+            <h1 className="font-brand-display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight mb-4">
+              <span className="hero-title-word inline-block opacity-0 text-white">
+                CORDEIRO
               </span>
               <br />
-              <span className="hero-title-word inline-block opacity-0">
-                Tecnologia
+              <span
+                className="hero-title-word inline-block opacity-0 text-gradient-gold font-sans font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-normal"
+              >
+                Construções &amp; Elétrica
               </span>
             </h1>
 
-            {/* Subtitle */}
+            {/* Slogan Display Bar */}
+            <div className="hero-slogan mb-6 flex items-center gap-3 opacity-0">
+              <div className="h-[2px] w-12 bg-gradient-to-r from-[#D4AF37] to-transparent" />
+              <p className="text-sm sm:text-base font-semibold tracking-[0.18em] uppercase text-[#DEC196]">
+                Projetando Hoje • Construindo Amanhã
+              </p>
+            </div>
+
+            {/* Description */}
             <p
-              className="hero-subtitle text-lg lg:text-xl leading-7 max-w-[480px] opacity-0"
-              style={{ color: 'var(--text-muted)' }}
+              className="hero-subtitle text-base sm:text-lg lg:text-xl leading-relaxed max-w-[540px] opacity-0 text-white/80 mb-8"
             >
-              Eletrotécnico especializado em segurança eletrônica, automação
-              residencial e serviços elétricos comerciais e industriais.
+              A <strong>Cordeiro Construções e Elétrica</strong> une conhecimento técnico e experiência prática para garantir excelência, segurança e orientações em economias inteligentes para sua obra.
             </p>
 
-            {/* CTA Row */}
-            <div className="hero-cta flex flex-wrap gap-4 mt-10 opacity-0">
-              <button
-                onClick={() => scrollTo('agendar')}
-                className="px-10 py-4 rounded-xl text-white font-bold text-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(26,115,232,0.4)] active:scale-95"
-                style={{ background: 'var(--electric)' }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = 'var(--electric-light)')
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = 'var(--electric)')
-                }
-              >
-                Agendar Visita
-              </button>
+            {/* CTA Buttons */}
+            <div className="hero-cta flex flex-wrap gap-4 opacity-0">
+              {/* Direct Instagram Button */}
               <a
-                href="https://wa.me/5522981697377"
+                href="https://www.instagram.com/cordeiroconstrucoeseletrica/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 hover:text-white active:scale-95"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base text-[#0C1814] bg-gradient-to-r from-[#F3E2B8] via-[#D4AF37] to-[#B89230] shadow-[0_4px_25px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_35px_rgba(212,175,55,0.6)] active:scale-95 transition-all duration-300"
+              >
+                <Instagram size={18} />
+                Orçamento pelo Direct
+              </a>
+
+              {/* WhatsApp Button */}
+              <a
+                href="https://api.whatsapp.com/send/?phone=5522997298782&text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20com%20a%20Cordeiro%20Constru%C3%A7%C3%B5es%20e%20El%C3%A9trica.&type=phone_number&app_absent=0&utm_source=ig"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 hover:text-white active:scale-95 text-[#25D366] hover:bg-[#25D366] hover:text-white"
                 style={{
-                  background: 'rgba(46, 204, 113, 0.15)',
-                  border: '1px solid rgba(46, 204, 113, 0.4)',
-                  color: 'var(--success)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--success)';
-                  e.currentTarget.style.color = '#fff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(46, 204, 113, 0.15)';
-                  e.currentTarget.style.color = 'var(--success)';
+                  background: 'rgba(37, 211, 102, 0.12)',
+                  border: '1px solid rgba(37, 211, 102, 0.35)',
                 }}
               >
                 <Phone size={18} />
                 Fale no WhatsApp
               </a>
+
+              {/* Agendar Wizard Button */}
+              <button
+                onClick={() => scrollTo('agendar')}
+                className="px-6 py-3.5 rounded-xl text-white/90 hover:text-white font-medium text-sm sm:text-base border border-white/20 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all duration-300"
+              >
+                Ver Serviços &amp; Agendar
+              </button>
+            </div>
+
+            {/* Value Callout */}
+            <div className="mt-8 p-3.5 rounded-xl bg-white/[0.03] border border-[#D4AF37]/20 flex items-center gap-3 max-w-[540px]">
+              <CheckCircle2 size={20} className="text-[#D4AF37] flex-shrink-0" />
+              <p className="text-xs sm:text-sm text-white/90">
+                <span className="text-[#DEC196] font-semibold">Pensando em construir?</span> Nós somos a melhor escolha para você. Faça um orçamento conosco!
+              </p>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-10 lg:gap-12 mt-14">
+            <div className="flex flex-wrap gap-8 lg:gap-10 mt-10">
               {STATS.map((stat) => (
                 <div key={stat.label} className="hero-stat opacity-0">
-                  <div
-                    className="font-black text-3xl lg:text-4xl"
-                    style={{ color: 'var(--electric)' }}
-                  >
+                  <div className="font-brand-display font-black text-2xl lg:text-3xl text-[#D4AF37]">
                     {stat.number}
                   </div>
-                  <div
-                    className="text-sm mt-1"
-                    style={{ color: 'var(--text-muted)' }}
-                  >
+                  <div className="text-xs sm:text-sm mt-0.5 text-white/60">
                     {stat.label}
                   </div>
                 </div>
@@ -247,159 +284,152 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column - 40% Video/Slideshow Carousel */}
-          <div className="hidden lg:flex flex-1 justify-center items-center relative w-full lg:max-w-[450px]">
-            <div className="hero-shield relative w-full opacity-0 animate-shield-pulse">
+          {/* Right Column - 42% Visual Feature with Cordeiro Emblem & Video Carousel */}
+          <div className="flex-1 w-full lg:max-w-[42%] flex justify-center items-center relative">
+            <div className="hero-visual relative w-full opacity-0">
               
-              {/* Carousel Container */}
+              {/* Outer Golden Border & Glow */}
               <div
-                className="w-full aspect-[4/3] rounded-3xl overflow-hidden flex flex-col justify-end relative group"
+                className="relative rounded-3xl overflow-hidden p-1 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
                 style={{
-                  background: '#0B1F3F',
-                  border: '2px solid transparent',
-                  backgroundClip: 'padding-box',
-                  boxShadow: '0 0 40px rgba(26, 115, 232, 0.2), inset 0 0 40px rgba(26, 115, 232, 0.1)',
+                  background: 'linear-gradient(135deg, rgba(212,175,55,0.7) 0%, rgba(12,24,20,0.9) 50%, rgba(212,175,55,0.4) 100%)',
                 }}
               >
-                {/* Border gradient overlay */}
-                <div
-                  className="absolute inset-0 rounded-3xl"
-                  style={{
-                    padding: '2.5px',
-                    background: 'linear-gradient(135deg, var(--electric), var(--amber))',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
-                    pointerEvents: 'none',
-                    zIndex: 10,
-                  }}
-                />
-
-                {/* Looping Video for current slide */}
-                {SLIDES.map((slide, index) => (
-                  <div
-                    key={slide.title}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      index === activeSlide ? 'opacity-100 z-1' : 'opacity-0 z-0 pointer-events-none'
-                    }`}
-                  >
-                    <video
-                      src={slide.videoUrl}
-                      poster={slide.posterUrl}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover opacity-80"
-                    />
+                <div className="rounded-[22px] overflow-hidden bg-[#0C1814] flex flex-col relative">
+                  
+                  {/* Top: Official Brand Lamb Emblem Presentation */}
+                  <div className="relative p-6 sm:p-8 flex flex-col items-center justify-center text-center bg-gradient-to-b from-[#142820] to-[#0C1814] border-b border-[#D4AF37]/20">
                     
-                    {/* Shadow gradient overlay for text readability */}
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: 'linear-gradient(to top, rgba(11, 31, 63, 0.95) 0%, rgba(11, 31, 63, 0.4) 50%, transparent 100%)',
-                        zIndex: 2,
-                      }}
-                    />
-
-                    {/* Badge */}
-                    <div className="absolute top-4 left-4 z-[5] flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-navy/80 backdrop-blur-sm border border-surface-border text-white">
-                      <slide.icon size={14} className="text-[var(--electric)]" />
-                      <span>{slide.tag}</span>
-                    </div>
-                  </div>
-                ))}
-
-                {/* Content Overlay */}
-                <div className="relative z-10 p-6 md:p-8 text-left w-full">
-                  <div className="text-white font-black text-2xl md:text-3xl leading-tight tracking-tight">
-                    {SLIDES[activeSlide].title}
-                  </div>
-                  <p className="text-sm mt-2 leading-relaxed animate-fade-in" style={{ color: 'var(--text-muted)' }}>
-                    {SLIDES[activeSlide].description}
-                  </p>
-
-                  {/* Navigation dots & arrows */}
-                  <div className="flex items-center justify-between mt-6">
-                    <div className="flex gap-1.5">
-                      {SLIDES.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setActiveSlide(index)}
-                          className={`h-1.5 rounded-full transition-all duration-300 ${
-                            index === activeSlide ? 'w-6 bg-[var(--electric)]' : 'w-1.5 bg-white/30'
-                          }`}
-                          aria-label={`Ir para slide ${index + 1}`}
+                    {/* Pulsing Lamb Emblem with Construction Helmet */}
+                    <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-full p-1 bg-gradient-to-tr from-[#DEC196] via-[#D4AF37] to-[#8F6C22] shadow-[0_0_35px_rgba(212,175,55,0.35)] animate-shield-pulse">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-[#0C1814] flex items-center justify-center">
+                        <img
+                          src="/images/cordeiro-emblem.png"
+                          alt="Cordeiro Construções e Elétrica - Símbolo"
+                          className="w-full h-full object-cover scale-105"
                         />
-                      ))}
+                      </div>
                     </div>
 
-                    <div className="flex gap-2">
-                      <button
-                        onClick={prevSlide}
-                        className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-[var(--electric)] text-white transition-all border border-white/10 active:scale-90"
-                        aria-label="Slide anterior"
-                      >
-                        <ChevronLeft size={16} />
-                      </button>
-                      <button
-                        onClick={nextSlide}
-                        className="w-8 h-8 rounded-full flex items-center justify-center bg-white/10 hover:bg-[var(--electric)] text-white transition-all border border-white/10 active:scale-90"
-                        aria-label="Próximo slide"
-                      >
-                        <ChevronRight size={16} />
-                      </button>
+                    <div className="mt-4">
+                      <div className="text-white font-brand-display font-black text-xl tracking-[0.12em]">
+                        CORDEIRO
+                      </div>
+                      <div className="text-[#DEC196] text-xs uppercase font-medium tracking-[0.2em] mt-0.5">
+                        CONSTRUÇÕES &amp; ELÉTRICA
+                      </div>
+                      <div className="mt-2 text-[11px] font-bold text-[#D4AF37] tracking-[0.15em] uppercase px-3 py-1 rounded-full bg-[#D4AF37]/10 inline-block border border-[#D4AF37]/30">
+                        Projetando Hoje, Construindo Amanhã
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Dynamic Service Showcase */}
+                  <div className="p-5 bg-[#091410] relative">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[11px] uppercase tracking-wider text-[#DEC196] font-semibold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-ping" />
+                        Serviços em Destaque
+                      </span>
+                      <span className="text-[11px] text-white/50">
+                        {activeSlide + 1} de {SLIDES.length}
+                      </span>
+                    </div>
+
+                    <div className="text-white font-bold text-base sm:text-lg flex items-center gap-2">
+                      {(() => {
+                        const IconComponent = SLIDES[activeSlide].icon;
+                        return <IconComponent size={18} className="text-[#D4AF37] flex-shrink-0" />;
+                      })()}
+                      <span>{SLIDES[activeSlide].title}</span>
+                    </div>
+                    <p className="text-xs text-white/70 mt-1 leading-relaxed">
+                      {SLIDES[activeSlide].description}
+                    </p>
+
+                    {/* Navigation Controls */}
+                    <div className="flex items-center justify-between mt-4 pt-3 border-t border-white/10">
+                      <div className="flex gap-1.5">
+                        {SLIDES.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setActiveSlide(index)}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              index === activeSlide ? 'w-6 bg-[#D4AF37]' : 'w-1.5 bg-white/30'
+                            }`}
+                            aria-label={`Ir para slide ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+
+                      <div className="flex gap-2">
+                        <button
+                          onClick={prevSlide}
+                          className="w-7 h-7 rounded-full flex items-center justify-center bg-white/10 hover:bg-[#D4AF37] hover:text-[#0C1814] text-white transition-all active:scale-90"
+                          aria-label="Slide anterior"
+                        >
+                          <ChevronLeft size={14} />
+                        </button>
+                        <button
+                          onClick={nextSlide}
+                          className="w-7 h-7 rounded-full flex items-center justify-center bg-white/10 hover:bg-[#D4AF37] hover:text-[#0C1814] text-white transition-all active:scale-90"
+                          aria-label="Próximo slide"
+                        >
+                          <ChevronRight size={14} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                {/* Video label icon (Volume muted notification) */}
-                <div className="absolute top-4 right-4 z-10 flex items-center gap-1 text-[10px] font-medium text-white/50 bg-black/40 px-2.5 py-1 rounded-full pointer-events-none">
-                  <VolumeX size={10} />
-                  <span>MUDO</span>
-                </div>
               </div>
 
-              {/* Floating Orbs */}
+              {/* Floating Orbs around the Visual */}
               <div
-                className="hero-orb absolute -top-4 -left-4 w-12 h-12 rounded-full flex items-center justify-center opacity-0 animate-float"
+                className="hero-orb hidden sm:flex absolute -top-3 -left-4 w-12 h-12 rounded-full items-center justify-center opacity-0 animate-float shadow-lg"
                 style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--surface-border)',
+                  background: '#11221B',
+                  border: '1px solid rgba(212,175,55,0.4)',
                   zIndex: 12,
                 }}
+                title="Projetos Estruturais"
               >
-                <Camera size={22} style={{ color: 'var(--electric)' }} />
+                <Compass size={22} className="text-[#D4AF37]" />
               </div>
+
               <div
-                className="hero-orb absolute top-8 -right-8 w-12 h-12 rounded-full flex items-center justify-center opacity-0 animate-float-delayed"
+                className="hero-orb hidden sm:flex absolute top-12 -right-4 w-12 h-12 rounded-full items-center justify-center opacity-0 animate-float-delayed shadow-lg"
                 style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--surface-border)',
+                  background: '#11221B',
+                  border: '1px solid rgba(212,175,55,0.4)',
                   zIndex: 12,
                 }}
+                title="Acompanhamento de Obras"
               >
-                <Shield size={22} style={{ color: 'var(--electric)' }} />
+                <HardHat size={22} className="text-[#D4AF37]" />
               </div>
+
               <div
-                className="hero-orb absolute -bottom-2 left-8 w-12 h-12 rounded-full flex items-center justify-center opacity-0 animate-float-delayed-2"
+                className="hero-orb hidden sm:flex absolute -bottom-3 left-10 w-12 h-12 rounded-full items-center justify-center opacity-0 animate-float-delayed-2 shadow-lg"
                 style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--surface-border)',
+                  background: '#11221B',
+                  border: '1px solid rgba(212,175,55,0.4)',
                   zIndex: 12,
                 }}
+                title="Instalações Elétricas"
               >
-                <Zap size={22} style={{ color: 'var(--electric)' }} />
+                <Zap size={22} className="text-[#D4AF37]" />
               </div>
+
               <div
-                className="hero-orb absolute bottom-12 -right-4 w-12 h-12 rounded-full flex items-center justify-center opacity-0 animate-float-delayed-3"
+                className="hero-orb hidden sm:flex absolute bottom-20 -right-3 w-12 h-12 rounded-full items-center justify-center opacity-0 animate-float-delayed-3 shadow-lg"
                 style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--surface-border)',
+                  background: '#11221B',
+                  border: '1px solid rgba(212,175,55,0.4)',
                   zIndex: 12,
                 }}
+                title="Câmeras e CFTV"
               >
-                <Lock size={22} style={{ color: 'var(--electric)' }} />
+                <Camera size={22} className="text-[#D4AF37]" />
               </div>
             </div>
           </div>
